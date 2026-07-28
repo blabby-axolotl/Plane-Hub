@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plane Hub — Upload Drawing</title>
+  <link rel="stylesheet" href="/assets/upload.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Upload a Plane Drawing (Client demo)</h1>
+
+    <section class="uploader">
+      <div id="drop-zone" class="drop-zone">
+        <p>Drag & drop images here or <button id="pick-files" class="btn">choose files</button></p>
+        <input id="file-input" type="file" accept="image/*" multiple hidden>
+      </div>
+
+      <form id="meta-form" class="meta-form">
+        <label>
+          Title (optional)
+          <input id="title" name="title" placeholder="e.g. My Spitfire sketch">
+        </label>
+        <label>
+          Folder / Tag (optional)
+          <input id="folder" name="folder" placeholder="e.g. WW2">
+        </label>
+        <div class="actions">
+          <button id="upload-btn" class="btn primary" type="button">Save to local gallery</button>
+          <button id="send-email-btn" class="btn" type="button">Also send by email</button>
+        </div>
+      </form>
+
+      <p class="note">This is a client-only demo: images are stored in your browser (not shared). Email sending requires a third-party client email service configured (see README).</p>
+    </section>
+
+    <section class="gallery">
+      <h2>Your saved drawings</h2>
+      <div id="gallery-grid" class="grid"></div>
+    </section>
+  </main>
+
+  <script src="/assets/email-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script src="/assets/upload.js"></script>
+</body>
+</html>
