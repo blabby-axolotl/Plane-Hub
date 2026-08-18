@@ -1,133 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<title>✈️ Plane Hub</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:"Space Grotesk",sans-serif;
-    background:
-    radial-gradient(circle at top,#1d4f7c,#0b1625 50%,#02060d);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    padding:40px;
-}
-
-
-.container{
-
-    max-width:900px;
-    padding:45px;
-    text-align:center;
-
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(18px);
-
-    border-radius:28px;
-
-    border:1px solid rgba(79,195,247,.25);
-
-    box-shadow:
-    0 0 40px rgba(79,195,247,.18);
-
-}
-
-
-h1{
-
-    font-size:3rem;
-
-    background:
-    linear-gradient(90deg,#7dd3fc,#38bdf8,#7dd3fc);
-
-    background-size:200%;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:gradient 6s infinite linear;
-
-    margin-bottom:25px;
-
-}
-
-
-@keyframes gradient{
-
-    from{
-        background-position:0%;
-    }
-
-    to{
-        background-position:200%;
-    }
-
-}
-
-
-h2{
-
-    color:#d5eaff;
-    font-size:1.3rem;
-    font-weight:400;
-    line-height:1.6;
-    margin-bottom:25px;
-
-}
-
-
-h3{
-
-    color:#7dd3fc;
-    font-size:1.1rem;
-
-}
-
-
-.icon{
-
-    font-size:70px;
-    margin-bottom:20px;
-
-}
-
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plane Hub — Prototype</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header>
+    <h1>Plane Hub (Prototype)</h1>
+    <nav>
+      <a href="index.html">Feed</a> |
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
 
-<div class="container">
+  <main>
+    <section id="upload">
+      <h2>Upload a plane photo</h2>
+      <form id="uploadForm">
+        <label>Display name: <input id="author" required></label>
+        <label>Email: <input id="email" type="email" required></label>
+        <label>Title: <input id="title" required></label>
+        <label>Description:<br><textarea id="description"></textarea></label>
+        <label>Image: <input id="file" type="file" accept="image/*,video/*" required></label>
+        <div id="captchaWrap">
+          <canvas id="captchaCanvas" width="150" height="50"></canvas>
+          <button type="button" id="refreshCaptcha">Refresh</button>
+        </div>
+        <label>Enter captcha: <input id="captchaInput" required></label>
+        <button type="submit">Upload (goes to admin approval)</button>
+      </form>
+      <p class="note">All uploads go into a pending queue for admin review. You will be notified locally when approved.</p>
+    </section>
 
-<div class="icon">✈️</div>
+    <section id="feed">
+      <h2>Approved posts</h2>
+      <div id="posts"></div>
+    </section>
+  </main>
 
-<h1>
-Welcome to Plane Hub
-</h1>
+  <template id="postTemplate">
+    <article class="post">
+      <header>
+        <h3 class="post-title"></h3>
+        <div class="meta"><span class="author"></span> • <time class="time"></time></div>
+      </header>
+      <div class="media"></div>
+      <p class="desc"></p>
+      <div class="actions">
+        <button class="likeBtn">Like (<span class="likeCount">0</span>)</button>
+        <button class="followBtn">Follow</button>
+        <button class="commentToggle">Comments</button>
+      </div>
+      <div class="comments" style="display:none;">
+        <div class="commentList"></div>
+        <input class="commentInput" placeholder="Write a comment..."><button class="commentSend">Send</button>
+      </div>
+    </article>
+  </template>
 
-<h2>
-A website where you can upload aircraft photos and automatically customise your bookmarks and ScriptView with your favourite aviation style.
-</h2>
-
-<h3>
-🚧 Currently under development — new features are coming soon!
-</h3>
-
-</div>
-
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plane Hub — Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Plane Hub — Admin</h1>
+    <nav>
+      <a href="index.html">Feed</a> |
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <section id="login">
+      <h2>Admin sign-in</h2>
+      <p>To access approval controls, sign in with the admin email.</p>
+      <label>Email: <input id="adminEmail" type="email"></label>
+      <button id="adminSignIn">Sign in</button>
+      <p id="loginMsg" class="note"></p>
+    </section>
+
+    <section id="pendingSection" style="display:none;">
+      <h2>Pending uploads</h2>
+      <div id="pendingList"></div>
+    </section>
+
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
